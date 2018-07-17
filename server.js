@@ -48,7 +48,7 @@ var http_server = http.createServer(app.use(cors({origin:'*'}))).listen(3001,'0.
               if (error) throw new Error(error);
               if(body.success == true){
                 io.emit(data.name,{"data":data.data});
-                console.log(data.name+data.data);
+                console.log(data.name);
               }
             });
           }
