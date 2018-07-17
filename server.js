@@ -32,25 +32,27 @@ var http_server = http.createServer(app.use(cors({origin:'*'}))).listen(3001,'0.
               url: 'https://sys.pixiubit.com/api/token_verify',
               headers:
               {
+                'Postman-Token': 'd436fc1f-e3e5-4cf2-bbe2-57917fbc4940',
                 'Cache-Control': 'no-cache',
-                'Content-Type': 'application/js',
+                'Content-Type': 'application/json',
                 'Accept': 'application/json'
               },
               body:
               {
-                'token': data.token
+                token: data.token
               },
               json: true
             };
+
             request(options, function (error, response, body) {
               if (error) throw new Error(error);
-              console.log(body); 
-             // console.log(response); 
+              if(body.success == true){
+                io.emit("new_order",{"toke":"asd"});
+              }
             });
-            
           }
           else{
-            console.log(typeof(data));
+            console.log('Deposits Data Error');
             }
           })
       });
