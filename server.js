@@ -23,8 +23,8 @@ var app = express();
 var cors = require('cors');
 //var http_server = https.createServer(app.use(cors({origin:'*'}))).listen(3001);
   var  options = {
-    key: fs.readFileSync('./cert/client.key'),
-    cert: fs.readFileSync('./cert/client.crt'),
+    key: fs.readFileSync('/etc/letsencrypt/live/ws.pixiubit.com/privkey.pem'),
+    cert: fs.readFileSync('/etc/letsencrypt/live/ws.pixiubit.com/fullchain.pem'),
     requestCert: true
   }
   var httpapp = express();
