@@ -2,6 +2,7 @@ var socket = require('socket.io'),
 express = require('express'),
 https = require('https'),
 http = require('http');
+fs = require('fs');
 const { createLogger, format, transports } = require('winston')
 
 const logger = createLogger({
