@@ -44,7 +44,7 @@ var http_server = http.createServer(app.use(cors({origin:'*'}))).listen(3001,'0.
             };
             request(options, function (error, response, body) {
               if (error) throw new Error(error);
-              console.log(data.token); 
+              console.log(body); 
              // console.log(response); 
             });
             
