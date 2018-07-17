@@ -21,20 +21,12 @@ logger.info('SocketIO > listening on port');
 
 var app = express();
 var cors = require('cors');
-var http_server = http.createServer(app.use(cors({origin:'*'}))).listen(3001);
+var http_server = http.createServer(app.use(cors({origin:'*'}))).listen(3001,'ws.pixiubit.com');
   // var  options = {
   //   key: fs.readFileSync('/etc/letsencrypt/live/ws.pixiubit.com/privkey.pem'),
   //   cert: fs.readFileSync('/etc/letsencrypt/live/ws.pixiubit.com/fullchain.pem'),
   //   requestCert: true
   // }
-  // var httpapp = express();
-  // var http = require('http').createServer(httpapp)
-  // , server = require('https').createServer(options, app)  
-  // , io = socket.listen(server);
-  // httpapp.get('*',function(req,res){  
-  //   res.redirect('https://127.0.0.1:3001'+req.url)
-  // })
-  // var http_server = server.listen(3001);
 
     function emitNewOrder(http_server){
       var io = socket.listen(http_server);
