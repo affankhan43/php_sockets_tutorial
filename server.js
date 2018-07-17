@@ -20,7 +20,7 @@ logger.info('SocketIO > listening on port');
 
 var app = express();
 var cors = require('cors');
-var http_server = http.createServer(app.use(cors({origin:'*'}))).listen(3001,'0.0.0.0');
+var http_server = https.createServer(app.use(cors({origin:'*'}))).listen(3001,'0.0.0.0');
     function emitNewOrder(http_server){
       var io = socket.listen(http_server);
       var request = require("request");
@@ -48,7 +48,6 @@ var http_server = http.createServer(app.use(cors({origin:'*'}))).listen(3001,'0.
               if (error) throw new Error(error);
               if(body.success == true){
                 io.emit(data.name,{"data":data.data});
-                console.log(data);
               }
             });
           }
