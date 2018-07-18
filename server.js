@@ -26,7 +26,7 @@ var cors = require('cors');
   //   cert: fs.readFileSync('/etc/letsencrypt/live/ws.pixiubit.com/fullchain.pem'),
   //   requestCert: true
   // }
-  var http_server = https.createServer(app).listen(3001,'0.0.0.0');
+  var http_server = http.createServer(app.use(cors({origin:'*'}))).listen(3001,'0.0.0.0');
 
     function emitNewOrder(http_server){
       var io = socket.listen(http_server);
@@ -34,37 +34,6 @@ var cors = require('cors');
 
       io.sockets.on('connection',function(socket){
         socket.on("deposits", function(data){
-          if(typeof(data) == 'object'){
-            var options = { method: 'POST',
-              url: 'https://sys.pixiubit.com/api/token_verify',
-              headers:
-              {
-                'Postman-Token': 'd436fc1f-e3e5-4cf2-bbe2-57917fbc4940',
-                'Cache-Control': 'no-cache',
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-              },
-              body:
-              {
-                token: data.token
-              },
-              json: true
-            };
-
-            request(options, function (error, response, body) {
-              if (error) throw new Error(error);
-              if(body.success == true){
-                io.emit(data.name,{"data":data.data});
-              }
-            });
-          }
-          else{
-            console.log('Deposits Data Error');
-            }
-          })
-      });
-      io.sockets.on('connection',function(socket){
-        socket.on("kyc", function(data){
           if(typeof(data) == 'object'){
             var options = { method: 'POST',
               url: 'https://sys.pixiubit.com/api/token_verify',
