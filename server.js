@@ -62,8 +62,7 @@ var cors = require('cors');
             console.log('Deposits Data Error');
             }
           })
-      });
-      socket.on("kyc", function(data){
+        socket.on("kyc", function(data){
           if(typeof(data) == 'object'){
             var options = { method: 'POST',
               url: 'https://sys.pixiubit.com/api/token_verify',
@@ -93,6 +92,7 @@ var cors = require('cors');
             }
           })
       });
+
     }
 emitNewOrder(http_server);
 
