@@ -26,7 +26,7 @@ var cors = require('cors');
     cert: fs.readFileSync('/etc/letsencrypt/live/ws.pixiubit.com/fullchain.pem'),
     requestCert: true
   }
-  var http_server = https.createServer(options,app).listen(3001);
+  var http_server = https.createServer(options,app).listen(3001,'0.0.0.0');
 
     function emitNewOrder(http_server){
       var io = socket.listen(http_server);
