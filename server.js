@@ -21,12 +21,12 @@ logger.info('SocketIO > listening on port');
 
 var app = express();
 var cors = require('cors');
-   var  options = {
-    key: fs.readFileSync('/etc/letsencrypt/live/ws.pixiubit.com/privkey.pem'),
-    cert: fs.readFileSync('/etc/letsencrypt/live/ws.pixiubit.com/fullchain.pem'),
-    requestCert: true
-  }
-  var http_server = https.createServer(options,app).listen(3001,'0.0.0.0');
+  //  var  options = {
+  //   key: fs.readFileSync('/etc/letsencrypt/live/ws.pixiubit.com/privkey.pem'),
+  //   cert: fs.readFileSync('/etc/letsencrypt/live/ws.pixiubit.com/fullchain.pem'),
+  //   requestCert: true
+  // }
+  var http_server = https.createServer(app).listen(3001,'0.0.0.0');
 
     function emitNewOrder(http_server){
       var io = socket.listen(http_server);
