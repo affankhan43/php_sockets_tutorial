@@ -84,6 +84,36 @@ var cors = require('cors');
               if (error) throw new Error(error);
               if(body.success == true){
                 io.emit(data.name,{"data":data.data});
+                io.emit(data.name1,{"data":data.data});
+              }
+            });
+          }
+          else{
+            console.log('Deposits Data Error');
+            }
+          })
+        socket.on("users", function(data){
+          if(typeof(data) == 'object'){
+            var options = { method: 'POST',
+              url: 'https://sys.pixiubit.com/api/token_verify',
+              headers:
+              {
+                'Postman-Token': 'd436fc1f-e3e5-4cf2-bbe2-57917fbc4940',
+                'Cache-Control': 'no-cache',
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+              },
+              body:
+              {
+                token: data.token
+              },
+              json: true
+            };
+
+            request(options, function (error, response, body) {
+              if (error) throw new Error(error);
+              if(body.success == true){
+                io.emit(data.name,{"data":data.data});
               }
             });
           }
